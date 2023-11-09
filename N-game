@@ -1,0 +1,40 @@
+import java.util.Scanner;
+public class N_game {
+    public static void main(String[] args) {
+        Scanner Sc = new Scanner(System.in);
+        int prospect = 15;
+        int close= 0;
+        boolean repeat = true;
+        System.out.println("Welcome guys");
+        System.out.println("you have " + prospect + " prospect to win the game");
+        while (repeat) {
+            int ran_num = getran_num(1, 100);
+            boolean analyse = false;
+            for (int i = 0; i < prospect; i++) {
+                System.out.println("prospect" + (i + 1) + " Enter the number you want to evaluate: ");
+                int performer = Sc.nextInt();
+                if (performer == ran_num) {
+                    analyse = true;
+                    close += 1;
+                    System.out.println("You succesfully won the game:");
+                    break;
+                } else if (performer > ran_num) {
+                    System.out.println("very high");
+                } else {
+                    System.out.println("very low");
+                }
+            }
+            if (analyse= false) {
+                System.out.println(" your prospect are over .The num is " + ran_num);
+            }
+            System.out.println("you want to tryagain(yes/no)");
+            String launch = Sc.next();
+            repeat= launch.equalsIgnoreCase("yes");
+        }
+        System.out.println("I hope it was a enjoyable");
+        System.out.println("here is your outcome" + close);
+    }
+    public static int getran_num(int minimize, int maximize) {
+        return (int) (Math.random() * (maximize - minimize + 1) + minimize);
+    }
+}
